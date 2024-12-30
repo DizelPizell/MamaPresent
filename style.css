@@ -1,0 +1,89 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f8f9fa; /* Светло-серый фон */
+    color: #333;
+    text-align: center;
+}
+header {
+    background: #4CAF50; /* Зеленый фон */
+    color: white;
+    padding: 20px;
+}
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+}
+.card {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: translateY(20px);
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+}
+.card.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+.button-primary {
+    padding: 15px 30px;
+    background: #007bff;
+    color: white;
+    border: none;
+    font-size: 1.2em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.button-primary:hover {
+    background: #0056b3;
+}
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+footer {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #555;
+}
+/* Адаптивный дизайн */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2em;
+    }
+    .button-primary {
+        font-size: 1em;
+        padding: 12px 25px;
+    }
+    .card {
+        padding: 15px;
+    }
+}
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5em;
+    }
+    .button-primary {
+        font-size: 0.9em;
+        padding: 10px 20px;
+    }
+    .card {
+        padding: 10px;
+    }
+    footer {
+        font-size: 0.8em;
+    }
+}

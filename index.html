@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>С Новым годом, мама!</title>
+    <link rel='stylesheet' href='style.css'>
+</head>
+<body>
+
+<header>
+    <h1>С Новым годом, мама!</h1>
+</header>
+
+<div class="container">
+    <!-- Введение -->
+    <div class="card" id="start-card" style="display: block; opacity: 1; transform: translateY(0);">
+        <h2>Дорогая мама,</h2>
+        <p>Мы, совместными усилиями, приготовили тебе подарок.  любовью от Дани и Алины</p>
+        <button class="button-primary" onclick="showCard('quiz-card')">Начать игру</button>
+    </div>
+
+    <!-- Викторина -->
+    <div class="card" id="quiz-card">
+        <h3>Мини-игра: Ответь на вопросы</h3>
+        <div id="quiz">
+            <div class="question" id="question-1">
+                <p><strong>Название одной из самых популярных книг Стругацких:</strong></p>
+                <input type="text" id="answer-1" placeholder="Ваш ответ">
+                <button class="button-primary" onclick="checkAnswer(1, 'Пикник на обочине')">Ответить</button>
+            </div>
+            <div class="question" id="question-2" style="display: none;">
+                <p><strong>Он построил пирамиды:</strong></p>
+                <input type="text" id="answer-2" placeholder="Ваш ответ">
+                <button class="button-primary" onclick="checkAnswer(2, 'египтянин')">Ответить</button>
+            </div>
+            <div class="question" id="question-3" style="display: none;">
+                <p><strong>Как зовут врача, спасателя, пожарного:</strong></p>
+                <input type="text" id="answer-3" placeholder="Ваш ответ">
+                <button class="button-primary" onclick="checkAnswer(3, 'герой')">Ответить</button>
+            </div>
+            <div class="question" id="question-4" style="display: none;">
+                <p><strong>Что это за язык: ‘.-.. ..- -.-. .-.. .-.- .-..’:</strong></p>
+                <input type="text" id="answer-4" placeholder="Ваш ответ">
+                <button class="button-primary" onclick="checkAnswer(4, 'азбука морзе')">Ответить</button>
+            </div>
+            <div class="question" id="question-5" style="display: none;">
+                <p><strong>На что намекали ответы на вопросы:</strong></p>
+                <input type="text" id="answer-5" placeholder="Ваш ответ">
+                <button class="button-primary" onclick="checkAnswer(5, 'группа пикник')">Ответить</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Подарок -->
+    <div class="card" id="gift-card">
+        <h3>🎁 Поздравляем!</h3>
+        <p>Это твой билет на концерт группы "Пикник". Мы тебя любим!</p>
+        <img src="/img/qr.jpg" alt="Подарок">
+    </div>
+</div>
+
+<footer>
+    Главные спонсоры: Артём и Юля.
+</footer>
+
+<script>
+    function showCard(cardId) {
+        const allCards = document.querySelectorAll('.card');
+        allCards.forEach(card => card.classList.remove('active'));
+
+        const targetCard = document.getElementById(cardId);
+        if (targetCard) {
+            targetCard.classList.add('active');
+        }
+    }
+
+    function checkAnswer(questionNumber, correctAnswer) {
+        const input = document.getElementById(`answer-${questionNumber}`).value.trim();
+        if (input.toLowerCase() === correctAnswer.toLowerCase()) {
+            alert('Правильный ответ!');
+            document.getElementById(`question-${questionNumber}`).style.display = 'none';
+            const nextQuestion = document.getElementById(`question-${questionNumber + 1}`);
+            if (nextQuestion) {
+                nextQuestion.style.display = 'block';
+            } else {
+                showCard('gift-card');
+            }
+        } else {
+            alert('Неправильный ответ. Попробуй ещё раз!');
+        }
+    }
+</script>
+
+</body>
+</html>
